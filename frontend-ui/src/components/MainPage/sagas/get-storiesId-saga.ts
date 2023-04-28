@@ -1,23 +1,27 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { getData } from '../../../requests';
+import { getStoriesId } from '../../../requests';
 
-import { getDataError, getDataSuccess, resetGetDataError } from '../actions';
+import {
+  getStoriesIdError,
+  getStoriesIdSuccess,
+  resetGetStoriesIdError,
+} from '../actions';
 import { types } from '../types';
 
-function* requestDataWorker(): Generator<any, any, any> {
+function* requestStoriesIdWorker(): Generator<any, any, any> {
   try {
-    const result: number[] = yield call(getData);
+    const result: number[] = yield call(getStoriesId);
 
-    yield put(resetGetDataError());
+    yield put(resetGetStoriesIdError());
 
-    yield put(getDataSuccess(result));
+    yield put(getStoriesIdSuccess(result));
   } catch (e) {
     const error = e as RequestError;
-    yield put(getDataError(error));
+    yield put(getStoriesIdError(error));
   }
 }
 
-export function* fetchDataWatcher() {
-  yield takeLatest(types.GET_DATA_REQUEST, requestDataWorker);
+export function* fetchStoriesIdWatcher() {
+  yield takeLatest(types.GET_STORIES_ID_REQUEST, requestStoriesIdWorker);
 }

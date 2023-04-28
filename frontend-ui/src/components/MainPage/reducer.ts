@@ -1,10 +1,10 @@
 import createReducer from '../../redux/create-reducer';
 
 import {
-  getDataFailedReducer,
-  getDataRequestReducer,
-  getDataResetErrorReducer,
-  getDataSuccessReducer,
+  getStoriesIdFailedReducer,
+  getStoriesIdRequestReducer,
+  getStoriesIdResetErrorReducer,
+  getStoriesIdSuccessReducer,
 } from './reducers';
 import { types, StoriesIdState } from './types';
 
@@ -17,8 +17,8 @@ export const initialState: StoriesIdState = {
 };
 
 export const storiesIdReducer = createReducer(initialState, {
-  [types.GET_DATA_REQUEST]: getDataRequestReducer,
-  [types.GET_DATA_SUCCESS]: getDataSuccessReducer,
-  [types.GET_DATA_FAILED]: getDataFailedReducer,
-  [types.RESET_DATA_ERROR]: getDataResetErrorReducer,
+  [types.GET_STORIES_ID_REQUEST]: getStoriesIdRequestReducer,
+  [types.GET_STORIES_ID_SUCCESS]: getStoriesIdSuccessReducer,
+  [types.GET_STORIES_ID_FAILED]: getStoriesIdFailedReducer,
+  [types.RESET_STORIES_ID_ERROR]: getStoriesIdResetErrorReducer,
 });

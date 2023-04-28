@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { getDataRequest } from './actions';
+import { getStoriesIdRequest } from './actions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-import StoryWrapper from '../StoryWrapper/StoryWrapper';
+import StoryWrapper from '../StoryWrapper';
 
 function MainPage() {
   const { data } = useAppSelector((state) => state.storiesId.storiesId);
@@ -10,8 +10,9 @@ function MainPage() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getDataRequest());
+    dispatch(getStoriesIdRequest());
   }, [dispatch]);
+
   return (
     <div>
       {data.map((storyId) => (

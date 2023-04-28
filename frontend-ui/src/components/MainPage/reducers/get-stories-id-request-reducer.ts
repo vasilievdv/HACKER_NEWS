@@ -1,13 +1,13 @@
 import { StoriesIdState } from '../types';
 
-export const getDataResetErrorReducer = (
+export const getStoriesIdRequestReducer = (
   state: StoriesIdState
 ): StoriesIdState => {
   return {
     ...state,
     storiesId: {
       ...state.storiesId,
-      error: null,
+      fetch: 'pending',
     },
   };
 };

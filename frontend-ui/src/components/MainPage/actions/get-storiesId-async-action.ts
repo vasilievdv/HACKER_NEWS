@@ -1,21 +1,23 @@
 import { types } from '../types';
 
-export const getDataRequest = () => ({
-  type: types.GET_DATA_REQUEST,
+export const getStoriesIdRequest = () => ({
+  type: types.GET_STORIES_ID_REQUEST,
 });
 
-export const getDataSuccess = (storiesId: number[]): BaseAction<number[]> => ({
-  type: types.GET_DATA_SUCCESS,
+export const getStoriesIdSuccess = (
+  storiesId: number[]
+): BaseAction<number[]> => ({
+  type: types.GET_STORIES_ID_SUCCESS,
   payload: storiesId,
 });
 
-export const getDataError = (
+export const getStoriesIdError = (
   message: RequestError
 ): BaseAction<RequestError> => ({
-  type: types.GET_DATA_FAILED,
+  type: types.GET_STORIES_ID_FAILED,
   payload: message,
 });
 
-export const resetGetDataError = (): BaseAction => ({
-  type: types.RESET_DATA_ERROR,
+export const resetGetStoriesIdError = (): BaseAction => ({
+  type: types.RESET_STORIES_ID_ERROR,
 });

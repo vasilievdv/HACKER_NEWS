@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch } from '../../hooks';
+import React, { useEffect, useState } from 'react';
+import { getStoryById } from '../../requests';
+import { Story } from './types';
 
 type Props = {
   storyId: number;
 };
 
 function StoryWrapper(props: Props) {
-  const dispatch = useAppDispatch();
+  const [story, setStory] = useState<Story>({});
 
   useEffect(() => {
-    // dispatch(getStory(storyId));
-  }, [dispatch]);
+    getStoryById(props.storyId)
+      .then((data) => setStory(data))
+      .catch((e) => console.error(e));
+  }, [props.storyId]);
 
-  return <div>Story Id: {props.storyId}</div>;
+  return <div>Story by: {story.by}</div>;
 }
 
 export default StoryWrapper;

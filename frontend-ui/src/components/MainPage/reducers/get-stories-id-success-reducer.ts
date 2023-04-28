@@ -1,15 +1,15 @@
 import { StoriesIdState } from '../types';
 
-export const getDataFailedReducer = (
+export const getStoriesIdSuccessReducer = (
   state: StoriesIdState,
-  action: BaseAction<RequestError>
+  actions: BaseAction<number[]>
 ): StoriesIdState => {
   return {
     ...state,
     storiesId: {
       ...state.storiesId,
-      fetch: 'rejected',
-      error: action.payload!,
+      fetch: 'resolve',
+      data: actions.payload!.slice(0, 100),
     },
   };
 };

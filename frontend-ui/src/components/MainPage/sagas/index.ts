@@ -1,7 +1,7 @@
 import { all, call } from 'redux-saga/effects';
 
-import { fetchDataWatcher } from './get-storiesId-saga';
+import { fetchStoriesIdWatcher } from './get-storiesId-saga';
 
-export function* websiteSagas() {
-  yield all([call(fetchDataWatcher)]);
+export function* storiesIdSagas() {
+  yield all([call(fetchStoriesIdWatcher)]);
 }
