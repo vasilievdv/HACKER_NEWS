@@ -3,6 +3,7 @@ import { getStoriesIdRequest } from './actions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import StoryWrapper from '../StoryWrapper';
+import { Container, Row } from 'react-bootstrap';
 
 function MainPage() {
   const { data } = useAppSelector((state) => state.storiesId.storiesId);
@@ -11,14 +12,22 @@ function MainPage() {
 
   useEffect(() => {
     dispatch(getStoriesIdRequest());
+    const refreshInterval = setInterval(() => {
+      dispatch(getStoriesIdRequest());
+    }, 60000);
+    return () => {
+      clearInterval(refreshInterval);
+    };
   }, [dispatch]);
 
   return (
-    <div>
-      {data.map((storyId) => (
-        <StoryWrapper key={storyId} storyId={storyId} />
-      ))}
-    </div>
+    <Container fluid="md">
+      <Row className="justify-content-md-center">
+        {data.map((storyId) => (
+          <StoryWrapper key={storyId} storyId={storyId} />
+        ))}
+      </Row>
+    </Container>
   );
 }
 

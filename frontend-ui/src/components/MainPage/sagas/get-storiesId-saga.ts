@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { SagaReturnType, call, put, takeLatest } from 'redux-saga/effects';
 
 import { getStoriesId } from '../../../requests';
 
@@ -9,9 +9,11 @@ import {
 } from '../actions';
 import { types } from '../types';
 
+type StoriesId = SagaReturnType<typeof getStoriesId>
+
 function* requestStoriesIdWorker(): Generator<any, any, any> {
   try {
-    const result: number[] = yield call(getStoriesId);
+    const result: StoriesId = yield call(getStoriesId);
 
     yield put(resetGetStoriesIdError());
 

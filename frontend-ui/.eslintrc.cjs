@@ -23,10 +23,12 @@ module.exports = {
     'react/prop-types': 0,
     'prefer-const': 0,
     '@typescript-eslint/no-unsafe-argument': 2,
-    '@typescript-eslint/no-unsafe-assignment': 2,
+    '@typescript-eslint/no-unsafe-assignment': "off",
     '@typescript-eslint/no-unsafe-call': 2,
     '@typescript-eslint/no-unsafe-member-access': 2,
     '@typescript-eslint/no-unsafe-return': 2,
     '@typescript-eslint/no-explicit-any': "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "import/default": "off",
   },
 };
