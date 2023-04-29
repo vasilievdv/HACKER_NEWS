@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Card from 'react-bootstrap/Card';
+import { Card, Row, Col } from 'react-bootstrap';
 import { getStoryById } from '../../requests';
 import { Story } from './types';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,6 @@ type Props = {
 function StoryWrapper(props: Props) {
   const [{ by, score, time, title, url, id, kids }, setStory] = useState<Story>({});
   const { storyId, isComment } = props;
-console.log(kids, title);
 
   useEffect(() => {
     getStoryById(storyId)
@@ -24,15 +23,28 @@ console.log(kids, title);
   return (
     <Card>
       <Card.Body>
-        <Card.Subtitle className="mb-2 text-muted">{by}</Card.Subtitle>
+        <Row>
+          <Col>
+            <Card.Subtitle className="mb-2 text-muted">{by}</Card.Subtitle>
+          </Col>
+          <Col style={{ display: 'flex', justifyContent: 'right' }}>
+            <Card.Subtitle>
+              {time && new Date(time * 1000).toLocaleDateString('en-GB')}
+            </Card.Subtitle>
+          </Col>
+        </Row>
         <Card.Link as={Link} to={`/story/${id!}`}>
           <Card.Title>{title}</Card.Title>
         </Card.Link>
-        <Card.Text>
-          {time && new Date(time * 1000).toLocaleDateString('en-GB')}
-        </Card.Text>
+        {/* <Card.Text>
+          asdfsadfsad
+        </Card.Text> */}
       </Card.Body>
-      {isComment && kids && kids.map((commentId) => <CommentBox key={commentId} commentId={commentId} />)}
+      {isComment &&
+        kids &&
+        kids.map((commentId) => (
+          <CommentBox key={commentId} commentId={commentId} />
+        ))}
     </Card>
   );
 }
