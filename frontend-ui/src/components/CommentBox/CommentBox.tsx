@@ -8,9 +8,11 @@ type Props = {
 };
 function CommentBox(props: Props) {
   const [isShow, setIsShow] = useState(false);
+
   const [{ text, kids, by, time }, setStory] = useState<Comment>({});
 
   const { commentId } = props;
+
   useEffect(() => {
     getCommentById(commentId)
       .then((data) => setStory(data))
@@ -23,7 +25,7 @@ function CommentBox(props: Props) {
 
   return (
     <div>
-      <Card style={{ margin: '0.1rem' }}>
+      <Card style={{ margin: '0.2rem' }}>
         <Card.Body>
           {/* <Card.Title>Card Title</Card.Title> */}
           <Row>
