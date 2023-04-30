@@ -39,20 +39,28 @@ function StoryWrapper(props: Props) {
             </Card.Subtitle>
           </Col>
         </Row>
-        <Card.Link as={Link} to={`/story/${id!}`}>
+        <Card.Link as={Link} to={`/story/${id!}`} style={{textDecoration: "none"}}>
           <Card.Title>{title}</Card.Title>
         </Card.Link>
         <Card.Link href={url} target="_blank">
           Go to the source
         </Card.Link>
-        <Card.Text>Text</Card.Text>
-        <Button
-          variant="outline-info"
-          size="sm"
-          onClick={handlerRefreshComments}
-        >
-          {`Update comments: ${descendants!}`}
-        </Button>
+        <Row>
+          <Col>
+            <Card.Text>👍 {score!}</Card.Text>
+          </Col>
+          <Col
+            style={{
+              display: 'flex',
+              justifyContent: 'right',
+            }}
+          >
+            <Card.Text>comments {descendants!}</Card.Text>
+            {/* <Button variant="link" onClick={handlerRefreshComments}>
+              {`Update comments: ${descendants!}`}
+            </Button> */}
+          </Col>
+        </Row>
       </Card.Body>
       {isComment &&
         kids &&

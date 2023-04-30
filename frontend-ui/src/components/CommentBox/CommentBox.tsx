@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { getCommentById } from '../../requests/get-comment-by-id';
 import { Comment } from '../../components/CommentBox';
+import styles from './comment-box.module.css';
 
 type Props = {
   commentId: number;
@@ -45,7 +46,9 @@ function CommentBox(props: Props) {
           disabled={!kids}
           onClick={handlerShowNestedComments}
         >
-          <Card.Text>{text}</Card.Text>
+          <Card.Text style={{ wordBreak: 'break-word', hyphens: 'auto' }}>
+            {text}
+          </Card.Text>
         </Button>
         {/* <Card.Link href="#">Card Link</Card.Link>
           <Card.Link href="#">Another Link</Card.Link> */}
