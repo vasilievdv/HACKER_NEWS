@@ -9,7 +9,7 @@ import {
 } from '../actions';
 import { types } from '../types';
 
-type StoriesId = SagaReturnType<typeof getStoriesId>
+type StoriesId = SagaReturnType<typeof getStoriesId>;
 
 function* requestStoriesIdWorker(): Generator<any, any, any> {
   try {

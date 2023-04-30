@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { getCommentById } from '../../requests/get-comment-by-id';
 import { Comment } from '../../components/CommentBox';
-import styles from './comment-box.module.css';
 
 type Props = {
   commentId: number;
@@ -29,7 +28,6 @@ function CommentBox(props: Props) {
   return (
     <Card style={{ margin: '0.2rem' }} ref={commentRef}>
       <Card.Body>
-        {/* <Card.Title>Card Title</Card.Title> */}
         <Row>
           <Col>
             <Card.Subtitle className="mb-2 text-muted">{by}</Card.Subtitle>
@@ -50,8 +48,6 @@ function CommentBox(props: Props) {
             {text}
           </Card.Text>
         </Button>
-        {/* <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link> */}
       </Card.Body>
       {isShow &&
         kids! &&

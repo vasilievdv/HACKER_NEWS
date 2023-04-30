@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { getStoriesIdRequest } from './actions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import StoryWrapper from '../StoryWrapper';
-import { Container, Row, Button } from 'react-bootstrap';
+import { Container, Row, Button, Alert } from 'react-bootstrap';
 
 function MainPage() {
   const { data } = useAppSelector((state) => state.storiesId.storiesId);
@@ -26,12 +26,17 @@ function MainPage() {
 
   return (
     <Container fluid="md">
-      <Button variant="outline-warning" onClick={handleRefresh}>
-        Refresh
-      </Button>
+      <Alert
+        variant="success"
+        style={{ display: 'flex', justifyContent: 'right' }}
+      >
+        <Button variant="outline-success" onClick={handleRefresh}>
+          Refresh
+        </Button>
+      </Alert>
       <Row>
         {data.map((storyId) => (
-          <StoryWrapper key={storyId} storyId={storyId} />
+          <StoryWrapper key={storyId} storyId={storyId} isTitleAsLink={true} />
         ))}
       </Row>
     </Container>
