@@ -1,4 +1,4 @@
-# HACKER_NEWS
+# HackerNews
 
 Application based on https://github.com/HackerNews/API
 
